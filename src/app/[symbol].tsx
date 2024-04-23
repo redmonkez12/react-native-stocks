@@ -2,6 +2,7 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { View, Text } from "@/src/components/Themed";
 import top5 from "@/assets/data/top5.json";
 import StockListItem from "@/src/components/StockListItem";
+import Graph from "@/src/components/Graph";
 
 export default function StockDetails() {
     const { symbol } = useLocalSearchParams();
@@ -16,11 +17,12 @@ export default function StockDetails() {
     }
 
     return (
-        <View style={{padding: 10}}>
+        <View style={{ padding: 10 }}>
             <Stack.Screen
                 options={{ title: stock.symbol, headerBackTitleVisible: false }}
             />
-            <StockListItem stock={stock}/>
+            <StockListItem stock={stock} />
+            <Graph symbol={stock.symbol} />
         </View>
     );
 }
